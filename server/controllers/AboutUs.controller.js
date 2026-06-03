@@ -1,58 +1,58 @@
 import db from "../Db/db.js";
 
 
-export const createAboutUs = async (req, res) => {
+export const createaboutus = async (req, res) => {
     try {
         const { AboutHeading  ,AboutDescription  ,AboutImage  ,AboutButton  } = req.body;
-        const [check] = await db.query("SELECT * FROM AboutUs");
+        const [check] = await db.query("SELECT * FROM aboutus");
         if (check[0].length > 0) {
             return res.status(400).json({
-                message: "Only one AboutUs is allowed",
+                message: "Only one aboutus is allowed",
             });
         }
-        const [Aboutus] = await db.query(
-            "INSERT INTO AboutUs (AboutHeading  ,AboutDescription  ,AboutImage  ,AboutButton) VALUES (?,?,?,?)",
+        const [aboutus] = await db.query(
+            "INSERT INTO aboutus (AboutHeading  ,AboutDescription  ,AboutImage  ,AboutButton) VALUES (?,?,?,?)",
             [AboutHeading  ,AboutDescription  ,AboutImage  ,AboutButton]
         );
         res.status(201).json({
-            AboutUs_id: Aboutus.insertId,
-            message: "AboutUs Created Successfully",
+            aboutus_id: aboutus.insertId,
+            message: "aboutus Created Successfully",
         });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: "cannot create AboutUs check log" });
+        res.status(500).json({ message: "cannot create aboutus check log" });
     }
 }
 
-export const getAboutUs = async (req, res) => {
+export const getaboutus = async (req, res) => {
     try {
-        const [AboutUs] = await db.query("SELECT * FROM AboutUs");
-        res.status(200).json({ AboutUs, message: "AboutUs Fetched Successfully" });
+        const [aboutus] = await db.query("SELECT * FROM aboutus");
+        res.status(200).json({ aboutus, message: "aboutus Fetched Successfully" });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: "cannot get AboutUs check log" });
+        res.status(500).json({ message: "cannot get aboutus check log" });
     }
 };
 
-export const deleteAboutUs = async (req, res) => {
+export const deleteaboutus = async (req, res) => {
     try {
         const id = req.params.id;
-        const AboutUs = await db.query("DELETE FROM AboutUs WHERE id = ?", [id]);
-        res.status(200).json({ AboutUs, message: "AboutUs Deleted Successfully" });
+        const aboutus = await db.query("DELETE FROM aboutus WHERE id = ?", [id]);
+        res.status(200).json({ aboutus, message: "aboutus Deleted Successfully" });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: "cannot delete AboutUs check log" });
+        res.status(500).json({ message: "cannot delete aboutus check log" });
     }
 };
 
-export const updateAboutUs = async (req, res) => {
+export const updateaboutus = async (req, res) => {
     try {
         const id = req.params.id;
-        const AboutUs = await db.query("UPDATE AboutUs SET ? WHERE id = ?", [req.body, id]);
-        res.status(200).json({ AboutUs, message: "AboutUs Updated Successfully" });
+        const aboutus = await db.query("UPDATE aboutus SET ? WHERE id = ?", [req.body, id]);
+        res.status(200).json({ aboutus, message: "aboutus Updated Successfully" });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: "cannot update AboutUs check log" });
+        res.status(500).json({ message: "cannot update aboutus check log" });
     }
 };
 
