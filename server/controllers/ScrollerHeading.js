@@ -6,7 +6,7 @@ export const createScroller = async (req, res) => {
 
   try {
     const [scroller] = await db.query(
-      "INSERT INTO scroller_Heading (heading) VALUE (?)",
+      "INSERT INTO scroller_heading (heading) VALUE (?)",
       [heading]
     );
 
@@ -24,7 +24,7 @@ export const createScroller = async (req, res) => {
 // get
 export const getScroller = async (req, res) => {
   try {
-    const [scroller] = await db.query("SELECT * FROM scroller_Heading");
+    const [scroller] = await db.query("SELECT * FROM scroller_heading");
     res.status(200).json({scroller,
         message: "Fetched Successfully"
     });
@@ -38,7 +38,7 @@ export const getScroller = async (req, res) => {
 export const deleteScroller = async (req, res) => {
   try {
     const id = req.params.id;
-    const blog = await db.query("DELETE FROM scroller_Heading WHERE id = ?", [id]);
+    const blog = await db.query("DELETE FROM scroller_heading WHERE id = ?", [id]);
     res.status(200).json({blog,
         message: "Blog Deleted Successfully"
     });
@@ -52,7 +52,7 @@ export const deleteScroller = async (req, res) => {
 export const updateScroller = async (req, res) => {
   try {
     const id = req.params.id;
-    const blog = await db.query("UPDATE scroller_Heading SET ? WHERE id = ?", [req.body, id]);
+    const blog = await db.query("UPDATE scroller_heading SET ? WHERE id = ?", [req.body, id]);
     res.status(200).json({blog,
         message: "Blog Updated Successfully"
     });
