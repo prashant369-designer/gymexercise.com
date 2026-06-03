@@ -27,7 +27,7 @@ export const createaboutus = async (req, res) => {
 export const getaboutus = async (req, res) => {
     try {
         const [aboutus] = await db.query("SELECT * FROM aboutus");
-        res.status(200).json({ aboutus, message: "aboutus Fetched Successfully" });
+        res.status(200).json({ Aboutus, message: "aboutus Fetched Successfully" });
     } catch (err) {
         console.log(err);
         res.status(500).json({ message: "cannot get aboutus check log" });
