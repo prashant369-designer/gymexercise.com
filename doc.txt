@@ -1,0 +1,18 @@
+          -------User Panel ---------
+  https://gym-store.axiomthemes.com/
+          -------Admin Panel ---------
+  https://themewagon.github.io/inapp/index.html
+
+
+          --------------user login--------------
+  user@gmail.com, 1234
+
+          --------------admin login--------------
+  admin@gmail.com, 1234
+
+          --------------superadmin login--------------
+  prashant369.learner@gmail.com , 1234
+
+
+          After publish what need to change
+1. change get started link with the original link of when user registred with email id so backend send the get started link so the link is navigate to original page rather than a localhost url 
