@@ -5,7 +5,7 @@ export const createMentor = async (req, res) => {
 
     try {
         const [teams] = await db.query(
-            "INSERT INTO Teams (mentorName ,mentorBio ,mentorExperties ,mentorImage ,mentorFacebook ,mentorInsta ,mentorYoutube) VALUES (?,?,?,?,?,?,?)",
+            "INSERT INTO teams (mentorName ,mentorBio ,mentorExperties ,mentorImage ,mentorFacebook ,mentorInsta ,mentorYoutube) VALUES (?,?,?,?,?,?,?)",
             [mentorName ,mentorBio ,mentorExperties ,mentorImage ,mentorFacebook ,mentorInsta ,mentorYoutube]
         );
         res.status(201).json({
@@ -20,7 +20,7 @@ export const createMentor = async (req, res) => {
 
 export const getMentors = async (req, res) => {
     try {
-        const [mentor] = await db.query("SELECT * FROM Teams");
+        const [mentor] = await db.query("SELECT * FROM teams");
         res.status(200).json({mentor,
                 message: "Fetched Successfully"
         });
@@ -33,7 +33,7 @@ export const getMentors = async (req, res) => {
 export const deleteMentors = async (req, res) => {
     try {
         const id = req.params.id;
-        const mentors = await db.query("DELETE FROM Teams WHERE id = ?", [id]);
+        const mentors = await db.query("DELETE FROM teams WHERE id = ?", [id]);
         res.status(200).json({mentors,
             message: "mentors Deleted Successfully"
         });
@@ -46,7 +46,7 @@ export const deleteMentors = async (req, res) => {
 export const updateMentors = async(req,res)=>{
     try {
         const id = req.params.id;
-        const mentors = await db.query("UPDATE Teams SET ? WHERE id = ?", [req.body, id]);
+        const mentors = await db.query("UPDATE teams SET ? WHERE id = ?", [req.body, id]);
         res.status(200).json({mentors,
             message: "mentors Updated Successfully"
         });
