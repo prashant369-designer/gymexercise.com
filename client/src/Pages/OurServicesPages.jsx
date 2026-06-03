@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../CommonComponents/Navbar";
 import Footer from "../CommonComponents/Footer";
-import AboutUs from "../components/AboutUs";
-import Testimonial from "../components/Testimonial";
+import AboutUs from "../Components/AboutUs";
+import Testimonial from "../Components/Testimonial";
 import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
 import { MdOutlineDirectionsRun } from "react-icons/md";
 import { GiBeerBottle } from "react-icons/gi";
