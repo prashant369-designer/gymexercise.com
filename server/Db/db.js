@@ -1,11 +1,11 @@
 import mysql from "mysql2/promise";
 
 const connection = mysql.createPool({
-  host: 'localhost',
+  host: 'acela.proxy.rlwy.net',
   user: 'root',
-  password: '',
-  database: 'gymstore',
-  port: process.env.DB_PORT,
+  password: 'CysLSzhJsOGzCPQcAfSMqArNeWBgmPks',
+  database: 'railway',
+  port: 45574,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
