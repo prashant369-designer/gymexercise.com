@@ -4,14 +4,14 @@ import db from "../Db/db.js";
 export const createAboutUs = async (req, res) => {
     try {
         const { AboutHeading  ,AboutDescription  ,AboutImage  ,AboutButton  } = req.body;
-        const [check] = await db.query("SELECT * FROM AboutUs");
+        const [check] = await db.query("SELECT * FROM aboutus");
         if (check[0].length > 0) {
             return res.status(400).json({
                 message: "Only one AboutUs is allowed",
             });
         }
         const [Aboutus] = await db.query(
-            "INSERT INTO AboutUs (AboutHeading  ,AboutDescription  ,AboutImage  ,AboutButton) VALUES (?,?,?,?)",
+            "INSERT INTO aboutus (AboutHeading  ,AboutDescription  ,AboutImage  ,AboutButton) VALUES (?,?,?,?)",
             [AboutHeading  ,AboutDescription  ,AboutImage  ,AboutButton]
         );
         res.status(201).json({
@@ -37,7 +37,7 @@ export const getAboutUs = async (req, res) => {
 export const deleteAboutUs = async (req, res) => {
     try {
         const id = req.params.id;
-        const AboutUs = await db.query("DELETE FROM AboutUs WHERE id = ?", [id]);
+        const AboutUs = await db.query("DELETE FROM aboutus WHERE id = ?", [id]);
         res.status(200).json({ AboutUs, message: "AboutUs Deleted Successfully" });
     } catch (err) {
         console.log(err);
@@ -48,7 +48,7 @@ export const deleteAboutUs = async (req, res) => {
 export const updateAboutUs = async (req, res) => {
     try {
         const id = req.params.id;
-        const AboutUs = await db.query("UPDATE AboutUs SET ? WHERE id = ?", [req.body, id]);
+        const AboutUs = await db.query("UPDATE aboutus SET ? WHERE id = ?", [req.body, id]);
         res.status(200).json({ AboutUs, message: "AboutUs Updated Successfully" });
     } catch (err) {
         console.log(err);
